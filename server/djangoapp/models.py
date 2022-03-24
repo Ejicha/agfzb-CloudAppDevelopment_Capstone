@@ -54,42 +54,64 @@ class CarModel(models.Model):
 
 class CarDealer:
 
-    def __init__(self, address, city, full_name, id, lat, long, short_name, st, zip):
+
+    def __init__(self, address, city, id, lat, long, st, zip):
         # Dealer address
         self.address = address
         # Dealer city
         self.city = city
-        # Dealer Full Name
-        self.full_name = full_name
+       
         # Dealer id
         self.id = id
         # Location lat
         self.lat = lat
         # Location long
         self.long = long
-        # Dealer short name
-        self.short_name = short_name
+
         # Dealer state
         self.st = st
         # Dealer zip
         self.zip = zip
 
     def __str__(self):
-        return "Dealer_name: " + self.short_name + "," + \
-            "Dealer_st: " + self.st + "," + \
-            "Dealer_id: " + str(self.id)
+        return "Dealer name: " + self.full_name
 
 
 class DealerReview:
-    def __init__(self, car_make, car_model, car_year, dealership, name, purchase, purchase_date, review, sentiment):
-        self.car_make = car_make
-        self.car_model = car_model
-        self.car_year = car_year
+
+    def __init__(self, dealership, name, purchase, review):
+        # Required attributes
         self.dealership = dealership
         self.name = name
         self.purchase = purchase
-        self.purchase_date = purchase_date
         self.review = review
-        self.sentiment = sentiment
+        # Optional attributes
+        self.purchase_date = ""
+        self.purchase_make = ""
+        self.purchase_model = ""
+        self.purchase_year = ""
+        self.sentiment = ""
+        self.id = ""
+
     def __str__(self):
-        return "Name: " + self.name
+        return "Review: " + self.review
+
+    def to_json(self):
+        return json.dumps(self, default=lambda o: o.__dict__,
+                            sort_keys=True, indent=4)
+
+class ReviewPost:
+
+    def __init__(self, dealership, name, purchase, review):
+        self.dealership = dealership
+        self.name = name
+        self.purchase = purchase
+        self.review = review
+        self.purchase_date = ""
+        self.car_make = ""
+        self.car_model = ""
+        self.car_year = ""
+
+    def to_json(self):
+        return json.dumps(self, default=lambda o: o.__dict__,
+                            sort_keys=True, indent=4)

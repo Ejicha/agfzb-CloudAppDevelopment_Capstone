@@ -5,6 +5,7 @@ from .models import CarDealer, DealerReview
 from requests.auth import HTTPBasicAuth
 
 
+
 def get_request(url, **kwargs):
     print(kwargs)
     print("GET from {} ".format(url))
