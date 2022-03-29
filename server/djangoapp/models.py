@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.timezone import now
-
+from django.core import serializers 
+import uuid
+import json
 
 class CarMake(models.Model):
     name = models.CharField(null=False, max_length=20, default='undefined')
