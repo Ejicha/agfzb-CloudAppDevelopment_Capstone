@@ -61,9 +61,9 @@ def get_dealer_by_id_from_cf(url, id):
 
 def get_dealer_reviews_from_cf(url, **kwargs):
     results = []
-    dealer_id = kwargs['dealer_id']
+    id = kwargs['dealer_id']
     # Call get_request with a URL parameter
-    json_result = get_request(url, dealerId=dealer_id)
+    json_result = get_request(url, id=id)
     if json_result:
         # Get the row list in JSON as dealers
         reviews = json_result["docs"]
