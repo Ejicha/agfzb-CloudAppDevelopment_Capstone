@@ -19,7 +19,7 @@ class CarModel(models.Model):
     # - Many-To-One relationship to Car Make model (One Car Make has many Car Models, using ForeignKey field)
     name = models.CharField(null=False, max_length=40, default='undefined')
     # - Name
-    dealer_id = models.CharField(null=False, max_length=40, default='undefined')        
+    id = models.IntegerField(default=1,primary_key=True)        
     # - Dealer id, used to refer a dealer created in cloudant database
     SEDAN = 'Sedan'
     SUV = 'SUV'
