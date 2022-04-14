@@ -46,8 +46,6 @@ class CarModel(models.Model):
         default=COUPE
     )
     # - Type (CharField with a choices argument to provide limited choices such as Sedan, SUV, WAGON, etc.)
-    year = models.DateField(null=False)
-    # - Year (DateField)
     year = models.DateTimeField('date designed')
     def __str__(self):
         return self.type
